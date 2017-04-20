@@ -11,7 +11,7 @@ public class ImageReader {
 		try{
 			return ImageIO.read(f);
 		}catch(IOException e){
-			e.printStackTrace();
+			e.printStackTrace(); // prints stack trace
 		}
 		return null;//if there is not file to read
 	}
