@@ -20,12 +20,13 @@ import utility.Util;
 public class GameWindow extends JFrame {
 	
 	Image myScreen;
-	Entity test = new Entity(ImageReader.getImageFromFile(new File("C:\\Users\\s521682\\Desktop\\Programs\\SchorTEngine\\src\\rsc\\Capture.PNG")));
+	Entity test = new Entity(ImageReader.getImageFromURL(Util.getFileURL("rsc\\testblock.png")));
 	
 	private static final long serialVersionUID = 1L;
 
 	public GameWindow(){
 		setup();
+		System.out.println(Util.getFileURL(""));
 	}
 	
 	private void setup(){
