@@ -26,7 +26,6 @@ public class GameWindow extends JFrame {
 
 	public GameWindow(){
 		setup();
-		System.out.println(Util.getFileURL(""));
 	}
 	
 	private void setup(){
