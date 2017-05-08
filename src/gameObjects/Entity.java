@@ -1,38 +1,46 @@
 package gameObjects;
 
 import java.awt.Image;
+import java.util.ArrayList;
+
+import graphics.Sprite;
 
 public class Entity {
 	
-	private long x;
-	private long y;
+	private double x;
+	private double y;
 	
 	private Image image;
+	private int selectedSprite;
 	
-	public Entity(long x, long y, Image image){
-		this.setX(x);
-		this.setY(y);
-		this.setImage(image);
+	public Entity(double x, double y, Image sprites){
+		this.selectedSprite = 0;
+		this.x = x;
+		this.y = y;
+		this.image = sprites;
 	}
-	public Entity(Image image){
-		this(0,0,image);
+	public Entity(Image sprites){
+		this(0,0,sprites);
 	}
-	public long getX() {
+	public double getX() {
 		return x;
 	}
-	public void setX(long x) {
+	public void setX(double x) {
 		this.x = x;
 	}
-	public long getY() {
+	public void addX(double x){
+		this.x += x;
+	}
+	public double getY() {
 		return y;
 	}
-	public void setY(long y) {
+	public void setY(double y) {
 		this.y = y;
+	}
+	public void addY(double y){
+		this.y += y;
 	}
 	public Image getImage() {
 		return image;
-	}
-	public void setImage(Image image) {
-		this.image = image;
 	}
 }

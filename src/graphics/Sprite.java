@@ -1,5 +1,6 @@
+package graphics;
+
 import java.util.*;								
-import static java.lang.System.*;
 import java.awt.*;
 
 public class Sprite
