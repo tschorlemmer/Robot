@@ -10,6 +10,9 @@ public class Entity {
 	private double x;
 	private double y;
 	
+	private double scale;
+	private double angle;
+	
 	private Image image;
 	private int selectedSprite;
 	
@@ -18,6 +21,8 @@ public class Entity {
 		this.x = x;
 		this.y = y;
 		this.image = sprites;
+		this.scale = 1;
+		this.angle = 0;
 	}
 	public Entity(Image sprites){
 		this(0,0,sprites);
@@ -42,5 +47,17 @@ public class Entity {
 	}
 	public Image getImage() {
 		return image;
+	}
+	public double getScale() {
+		return scale;
+	}
+	public void setScale(double scale) {
+		this.scale = scale;
+	}
+	public double getAngle() {
+		return angle;
+	}
+	public void setAngle(double angle) {
+		this.angle = angle;
 	}
 }
