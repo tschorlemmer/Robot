@@ -46,6 +46,8 @@ public class GameWindow extends JFrame {
 		g.drawImage(myScreen,0,0,null);
 	}   
 	public void doubleBuffer(Graphics g){
+		g.drawImage(ObjectManager.chunk.getImage(), 0, 0, null);
+		//g.drawImage(ObjectManager.test.getImage(), 0, 0, null);
 		g.drawImage(ObjectManager.player.getImage(),(int)ObjectManager.player.getX(),(int)ObjectManager.player.getY(),null);
 	}
 }
