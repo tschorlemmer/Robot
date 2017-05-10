@@ -1,5 +1,6 @@
 package main;
 
+import gameObjects.ObjectManager;
 import graphics.GameWindow;
 import utility.Util;
 
@@ -76,7 +77,7 @@ public class Game {
 	}
 	
 	private void updateLogic(){
-		
+		ObjectManager.update();
 	}
 	private void updateGraphics(){
 		gameWindow.repaint();

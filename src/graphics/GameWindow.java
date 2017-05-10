@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import gameFileIO.ImageReader;
 import gameListeners.GameKeyListener;
 import gameObjects.Entity;
+import gameObjects.ObjectManager;
 import utility.Util; 
 
 /*
@@ -20,13 +21,11 @@ import utility.Util;
 public class GameWindow extends JFrame {
 	
 	Image myScreen;
-	Entity test = new Entity(ImageReader.getImageFromURL(Util.getFileURL("rsc\\testblock.png")));
 	
 	private static final long serialVersionUID = 1L;
 
 	public GameWindow(){
 		setup();
-		System.out.println(Util.getFileURL(""));
 	}
 	
 	private void setup(){
@@ -47,6 +46,6 @@ public class GameWindow extends JFrame {
 		g.drawImage(myScreen,0,0,null);
 	}   
 	public void doubleBuffer(Graphics g){
-		g.drawImage(test.getImage(),0,0,null);
+		g.drawImage(ObjectManager.player.getImage(),(int)ObjectManager.player.getX(),(int)ObjectManager.player.getY(),null);
 	}
 }
