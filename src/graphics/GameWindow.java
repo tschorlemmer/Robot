@@ -21,6 +21,7 @@ import utility.Util;
 public class GameWindow extends JFrame {
 	
 	Image myScreen;
+	public static int x = 0, y = 0;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -46,8 +47,10 @@ public class GameWindow extends JFrame {
 		g.drawImage(myScreen,0,0,null);
 	}   
 	public void doubleBuffer(Graphics g){
-		g.drawImage(ObjectManager.chunk.getImage(), 0, 0, null);
-		//g.drawImage(ObjectManager.test.getImage(), 0, 0, null);
-		g.drawImage(ObjectManager.player.getImage(),(int)ObjectManager.player.getX(),(int)ObjectManager.player.getY(),null);
+		Entity[] e = {ObjectManager.player};
+		Camera c = new Camera(ObjectManager.map.getChunks(),e,x,y);
+	
+		g.drawImage(c.getView(), 0, 0, null);
+		//g.drawImage(ObjectManager.player.getImage(),(int)ObjectManager.player.getX(),(int)ObjectManager.player.getY(),null);
 	}
 }

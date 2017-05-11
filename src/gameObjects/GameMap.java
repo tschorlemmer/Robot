@@ -15,9 +15,16 @@ public class GameMap {
 		this.chunks = chunks;
 	}
 	public void fillAll(int tileID){
-		for(Chunk[] x:chunks)
-			for(Chunk y:x)
-				y.fillAll(tileID);
+		for(int x = 0;x<chunks.length; x++){
+			for(int y = 0; y<chunks[x].length; y++){
+				if(chunks[x][y]!= null)
+					chunks[x][y].fillAll(tileID);
+				else
+					chunks[x][y] = new Chunk(tileID);
+			}
+		}
+				
+		
 	}
 	public double getScale() {
 		return scale;
@@ -40,6 +47,13 @@ public class GameMap {
 	}
 	public void setShunk(int x, int y, Chunk chunk){
 		chunks[x][y] = chunk;
+	}
+	
+	public Chunk[][] getChunks(){
+		return chunks;
+	}
+	public void setChunks(Chunk[][] chunks){
+		this.chunks = chunks;
 	}
 
 }

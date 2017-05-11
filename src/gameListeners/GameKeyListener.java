@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import gameObjects.ObjectManager;
+import graphics.GameWindow;
 
 public class GameKeyListener implements KeyListener {
 
@@ -21,6 +22,18 @@ public class GameKeyListener implements KeyListener {
 			break;
 		case KeyEvent.VK_D:
 			ObjectManager.player.setMoveRight(true);
+			break;
+		case KeyEvent.VK_UP:
+			GameWindow.y--;
+			break;
+		case KeyEvent.VK_DOWN:
+			GameWindow.y++;
+			break;
+		case KeyEvent.VK_LEFT:
+			GameWindow.x--;
+			break;
+		case KeyEvent.VK_RIGHT:
+			GameWindow.x++;
 			break;
 		}
 	}
