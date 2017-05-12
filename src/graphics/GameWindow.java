@@ -4,9 +4,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JFrame;
 
-import gameFileIO.ImageReader;
 import gameListeners.GameKeyListener;
 import gameObjects.Entity;
+import gameObjects.ObjectManager;
 import utility.Util; 
 
 /*
