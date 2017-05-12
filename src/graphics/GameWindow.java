@@ -18,8 +18,7 @@ import utility.Util;
 public class GameWindow extends JFrame {
 	
 	Image myScreen;
-	Entity test = new Entity(ImageReader.getImageFromURL(Util.getFileURL("rsc\\testblock.png")));
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public GameWindow(){
@@ -45,6 +44,6 @@ public class GameWindow extends JFrame {
 		g.drawImage(myScreen,0,0,null);
 	}   
 	public void doubleBuffer(Graphics g){
-		g.drawImage(test.getImage(),0,0,null);
+
 	}
 }

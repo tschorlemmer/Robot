@@ -6,6 +6,8 @@ import java.net.URL;
 
 public class Util {
 	
+	public final static int IMAGESIZE = 64;
+	
 	//returns the system time in milliseconds
 	public static long getTime(){
 		return System.currentTimeMillis();
