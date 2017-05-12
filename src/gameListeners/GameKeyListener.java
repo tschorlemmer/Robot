@@ -4,13 +4,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import gameObjects.ObjectManager;
+import graphics.GameWindow;
 
 public class GameKeyListener implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
-		int code = e.getKeyCode();
+		int code = e.getKeyCode();//gets the code from the keyevent for use in the listener
 		switch(code){
-		case KeyEvent.VK_W:
+		case KeyEvent.VK_W://sets the directions of player movement while the key is pressed down
 			ObjectManager.player.setMoveUp(true);
 			break;
 		case KeyEvent.VK_S:
@@ -28,7 +29,7 @@ public class GameKeyListener implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();
 		switch(code){
-		case KeyEvent.VK_W:
+		case KeyEvent.VK_W://stops the character movement in the various directions when the key is released
 			ObjectManager.player.setMoveUp(false);
 			break;
 		case KeyEvent.VK_S:

@@ -47,7 +47,7 @@ public class ImageReader {
 		return null;//if there is not a file found to be read
 	}
 	
-	private static void nife(){
+	private static void nife(){//no image found error
 		System.out.println("No Image Found, returning null");
 	}
 }
