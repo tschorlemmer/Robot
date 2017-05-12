@@ -1,5 +1,7 @@
 package gameObjects;
-
+/*
+ * point of this class is to serve as the basis for all other object that are drawn or manipulated on the screen
+ */
 import java.awt.Image;
 import java.util.ArrayList;
 
@@ -47,6 +49,9 @@ public class Entity {
 	}
 	public Image getImage() {
 		return image;
+	}
+	public void setImage(Image image){
+		this.image = image;
 	}
 	public double getScale() {
 		return scale;

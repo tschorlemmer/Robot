@@ -11,30 +11,19 @@ public class Chunk {
 	public final static int SIZE = 16;//constant x and y size of the grid
 	
 	Tile[][] tiles;//all of the tiles in the chunk
-	private double scale = 1;//scale of the tiles
 
 	public Chunk() {
-		tiles = new Tile[SIZE][SIZE];
+		tiles = new Tile[SIZE][SIZE];//creates empty chunk with default size
 	}
 	public Chunk(int tileID){
 		this();
-		fillAll(tileID);
+		fillAll(tileID);//creates chunk filled with same tile
 	}
 	
 	public void fillAll(int tileID){
 		for(int x = 0; x < SIZE; x++)
 			for(int y = 0; y < SIZE; y++)
 				tiles[x][y] = new Tile(tileID);//changes all the tiles to a certain type
-	}
-
-	public double getScale() {
-		return scale;
-	}
-	public void setScale(double scale) {
-		this.scale = scale;
-		for(int x = 0; x < SIZE; x++)
-			for(int y = 0; y < SIZE; y++)
-				tiles[x][y].setScale(scale);;//changes the scale of all tiles
 	}
 	
 	public Tile getTile(int x, int y){
@@ -52,7 +41,7 @@ public class Chunk {
 		this.tiles = tiles;
 	}
 	public int getImageSize(){
-		return (int)(SIZE*Util.IMAGESIZE*scale);
+		return (int)(SIZE*Util.IMAGESIZE);
 	}
 	public Image getImage(){
 		int s = getImageSize();
@@ -61,7 +50,7 @@ public class Chunk {
 		Graphics g = image.getGraphics();
 		for(int x = 0; x < SIZE; x++){
 			for(int y = 0; y < SIZE; y++){
-				g.drawImage(tiles[x][y].getImage(),(int)(x*scale*Util.IMAGESIZE),(int)(y*scale*Util.IMAGESIZE),null);
+				g.drawImage(tiles[x][y].getImage(),(int)(x*Util.IMAGESIZE),(int)(y*Util.IMAGESIZE),null);
 			}
 		}
 		return image;

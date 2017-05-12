@@ -5,7 +5,6 @@ import utility.Util;
 public class GameMap {
 	
 	private Chunk[][] chunks;
-	private double scale;
 	
 	public GameMap(int width, int height, int tileID) {
 		chunks = new Chunk[width][height];
@@ -22,18 +21,7 @@ public class GameMap {
 				else
 					chunks[x][y] = new Chunk(tileID);
 			}
-		}
-				
-		
-	}
-	public double getScale() {
-		return scale;
-	}
-	public void setScale(double scale) {
-		this.scale = scale;
-		for(Chunk[] x:chunks)
-			for(Chunk y:x)
-				y.setScale(scale);
+		}	
 	}
 	public int getChunkX(int x){
 		return x/(Chunk.SIZE*Util.IMAGESIZE);
