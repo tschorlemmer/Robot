@@ -32,7 +32,8 @@ public class ImageDemo extends Sprite
           e.printStackTrace();
           System.exit(1);
         }
-        i.setAngle(90);
+        i.setSize(.5);
+        i.setAngle(-90);
         ImageIcon imageIcon = new ImageIcon(i.getImage());
         JLabel jLabel = new JLabel();
         jLabel.setIcon(imageIcon);
