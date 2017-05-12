@@ -28,7 +28,6 @@ public class Sprite
 	}
 	public Image getImage()
 	{
-		System.out.println(ang);
 		timePassed= System.currentTimeMillis()-initial;
 		curPic= (int)(timePassed/updateTime)%pics1.size();
 		return pics2.get(curPic);
@@ -73,9 +72,8 @@ public class Sprite
 		{
 			if(!transformed.get(x))
 			{
-				System.out.println(x);
 				pics2.set(x,adj.rotate(pics1.get(x),ang));
-				pics2.set(x,adj.resize(pics1.get(x),size));
+				pics2.set(x,adj.resize(pics2.get(x),size));
 			}
 		}
 	}	
