@@ -17,14 +17,14 @@ import utility.Util;
 
 public class GameWindow extends JFrame {
 	
-	Image myScreen;
+	private static Image myScreen;
+	private static Camera c;
 
-	public static int x = 0, y = 0;
 	private static final long serialVersionUID = 1L;
 
 	public GameWindow(){
 		setup();
-		System.out.println(Util.getFileURL(""));
+		c = new Camera();
 	}
 	
 	private void setup(){
@@ -46,8 +46,12 @@ public class GameWindow extends JFrame {
 	}   
 	public void doubleBuffer(Graphics g){
 		Entity[] e = {ObjectManager.player};
-		Camera c = new Camera(ObjectManager.map.getChunks(),e,x,y);
-	
+		c.setEntities(e);
+		c.setChunks(ObjectManager.map.getChunks());
 		g.drawImage(c.getView(), 0, 0, null);
+	}
+	
+	public static Camera getCamera(){
+		return c;
 	}
 }
