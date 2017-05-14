@@ -3,6 +3,7 @@ package gameListeners;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import gameObjects.Item;
 import gameObjects.ObjectManager;
 import graphics.GameWindow;
 
@@ -40,6 +41,9 @@ public class GameKeyListener implements KeyListener {
 			break;
 		case KeyEvent.VK_RIGHT:
 			GameWindow.getCamera().addX(10);
+			break;
+		case KeyEvent.VK_SPACE:
+			ObjectManager.addItem(new Item(ObjectManager.player.getX(),ObjectManager.player.getY(),0));
 			break;
 		}
 	}

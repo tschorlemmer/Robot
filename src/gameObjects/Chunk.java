@@ -3,6 +3,7 @@ package gameObjects;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import utility.Util;
 
@@ -40,7 +41,7 @@ public class Chunk {
 	public void setTiles(Tile[][] tiles){
 		this.tiles = tiles;
 	}
-	public int getImageSize(){
+	public static int getImageSize(){
 		return (int)(SIZE*Util.IMAGESIZE);
 	}
 	public Image getImage(){

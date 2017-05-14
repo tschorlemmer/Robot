@@ -2,10 +2,14 @@ package graphics;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import gameListeners.GameKeyListener;
 import gameObjects.Entity;
+import gameObjects.Item;
+import gameObjects.ItemChunk;
 import gameObjects.ObjectManager;
 import utility.Util; 
 
@@ -43,11 +47,17 @@ public class GameWindow extends JFrame {
 		Graphics o = myScreen.getGraphics();
 		doubleBuffer(o);
 		g.drawImage(myScreen,0,0,null);
-	}   
+	}
+	
 	public void doubleBuffer(Graphics g){
-		Entity[] e = {ObjectManager.player};
-		c.setEntities(e);
 		c.setChunks(ObjectManager.map.getChunks());
+		ArrayList<Entity> entities = new ArrayList<Entity>();
+		ItemChunk[][] i = ObjectManager.map.getIChunks();
+		for(ItemChunk[] x:i)
+			for(ItemChunk y:x)
+					entities.addAll(y.getItems());
+		entities.add(ObjectManager.player);
+		c.setEntities(entities);
 		g.drawImage(c.getView(), 0, 0, null);
 	}
 	
