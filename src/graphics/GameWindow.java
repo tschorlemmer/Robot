@@ -2,10 +2,14 @@ package graphics;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import gameListeners.GameKeyListener;
 import gameObjects.Entity;
+import gameObjects.Item;
+import gameObjects.ItemChunk;
 import gameObjects.ObjectManager;
 import utility.Util; 
 
@@ -17,14 +21,14 @@ import utility.Util;
 
 public class GameWindow extends JFrame {
 	
-	Image myScreen;
+	private static Image myScreen;
+	private static Camera c;
 
-	public static int x = 0, y = 0;
 	private static final long serialVersionUID = 1L;
 
 	public GameWindow(){
 		setup();
-		System.out.println(Util.getFileURL(""));
+		c = new Camera();
 	}
 	
 	private void setup(){
@@ -43,11 +47,21 @@ public class GameWindow extends JFrame {
 		Graphics o = myScreen.getGraphics();
 		doubleBuffer(o);
 		g.drawImage(myScreen,0,0,null);
-	}   
-	public void doubleBuffer(Graphics g){
-		Entity[] e = {ObjectManager.player};
-		Camera c = new Camera(ObjectManager.map.getChunks(),e,x,y);
+	}
 	
+	public void doubleBuffer(Graphics g){
+		c.setChunks(ObjectManager.map.getChunks());
+		ArrayList<Entity> entities = new ArrayList<Entity>();
+		ItemChunk[][] i = ObjectManager.map.getIChunks();
+		for(ItemChunk[] x:i)
+			for(ItemChunk y:x)
+					entities.addAll(y.getItems());
+		entities.add(ObjectManager.player);
+		c.setEntities(entities);
 		g.drawImage(c.getView(), 0, 0, null);
+	}
+	
+	public static Camera getCamera(){
+		return c;
 	}
 }

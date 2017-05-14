@@ -3,7 +3,9 @@ package gameListeners;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import gameObjects.Item;
 import gameObjects.ObjectManager;
+import graphics.GameWindow;
 
 public class GameKeyListener implements KeyListener {
 
@@ -21,6 +23,27 @@ public class GameKeyListener implements KeyListener {
 			break;
 		case KeyEvent.VK_D:
 			ObjectManager.player.setMoveRight(true);
+			break;
+		case KeyEvent.VK_EQUALS:
+			GameWindow.getCamera().addScale(.1);
+			break;
+		case KeyEvent.VK_MINUS:
+			GameWindow.getCamera().addScale(-.1);
+			break;
+		case KeyEvent.VK_UP:
+			GameWindow.getCamera().addY(-10);
+			break;
+		case KeyEvent.VK_DOWN:
+			GameWindow.getCamera().addY(10);
+			break;
+		case KeyEvent.VK_LEFT:
+			GameWindow.getCamera().addX(-10);
+			break;
+		case KeyEvent.VK_RIGHT:
+			GameWindow.getCamera().addX(10);
+			break;
+		case KeyEvent.VK_SPACE:
+			ObjectManager.addItem(new Item(ObjectManager.player.getX(),ObjectManager.player.getY(),0));
 			break;
 		}
 	}
