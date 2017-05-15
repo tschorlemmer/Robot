@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import gameObjects.Chunk;
 import gameObjects.Entity;
 import gameObjects.Item;
+import gameObjects.ObjectManager;
 import utility.Util;
 
 public class Camera {
@@ -46,11 +47,14 @@ public class Camera {
 	private void drawView(Graphics g){
 		ImageAdj iA = new ImageAdj();
 		
+		int ox = ObjectManager.getChunkX();
+		int oy = ObjectManager.getChunkY();
+		
 		if(chunks != null){
 			int offsetFactor = (int)(Chunk.getImageSize()*scale);
 			for(int i = 0; i<chunks.length; i++){
-				for(int u = 0; u<chunks[i].length; u++){
-					g.drawImage(iA.resize(chunks[i][u].getImage(),scale), offsetFactor*i+getXCalibrated(), offsetFactor*u+getYCalibrated(),null);
+				for(int u = 0; u<chunks[0].length; u++){
+					g.drawImage(iA.resize(chunks[i][u].getImage(),scale), offsetFactor*(i+ox)+getXCalibrated(), offsetFactor*(u+oy)+getYCalibrated(),null);
 				}
 			}
 		}

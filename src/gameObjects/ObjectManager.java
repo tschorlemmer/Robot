@@ -24,6 +24,19 @@ public class ObjectManager {
 			map.getIChunks()[x][y].addItem(i);
 	}
 	
+	public static int getChunkX(){
+		int x = map.getChunkX((int)(GameWindow.getCamera().getX()-((1/GameWindow.getCamera().getScale())*(Util.getScreenWidth()/2.0))));
+		if(x < 0)
+			x = 0;
+		return x;
+	}
+	public static int getChunkY(){
+		int y =  map.getChunkY((int)(GameWindow.getCamera().getY()-((1/GameWindow.getCamera().getScale())*(Util.getScreenHeight()/2.0))));
+		if(y < 0)
+			 y = 0;
+		return y;
+	}
+	
 	private static void updateCamera(){
 		
 		int x = (int)(GameWindow.getCamera().getX()-((1/GameWindow.getCamera().getScale())*(Util.getScreenWidth()/2.0)));
@@ -43,8 +56,8 @@ public class ObjectManager {
 		xr = map.getChunkX((int) (xr));
 		yd = map.getChunkY((int) (yd));
 		
-//		System.out.println("x: " + x + " xr: " + xr);
-//		System.out.println("y: " + y + " yd: " + yd);
+		System.out.println("x: " + x + " xr: " + xr);
+		System.out.println("y: " + y + " yd: " + yd);
 
 		
 		if(x < 0)
@@ -52,14 +65,16 @@ public class ObjectManager {
 		if(y < 0)
 			y = 0;
 
-		if(map.getWidth() <= xr+1)
-			width = map.getWidth()-x;
-		else
-			width = xr+1-x;
-		if(map.getHeight() <= yd+1)
-			height = map.getHeight()-y;
-		else
-			height = yd+1-y;
+
+		width = xr-x+2;
+		height = yd-y+1;
+		
+		if(width+x >= map.getWidth())
+			width = map.getWidth()-x-1;
+		if(height+y >= map.getHeight())
+			height = map.getHeight()-y-1;
+		
+		System.out.println("width: " + width + "  height: " + height);
 		
 		if(width < 0)
 			width = 0;
@@ -73,6 +88,7 @@ public class ObjectManager {
 		
 		for(int i = 0; i < width; i++){
 			for(int z = 0; z < height; z++){
+				System.out.println("temp chunk" + i +","+z+" : " + (i+x) + "," + (z+y));
 				chunks[i][z] = map.getChunk(i+x, z+y);
 				entities.addAll(map.getIChunk(i+x, z+y).getItems());
 			}

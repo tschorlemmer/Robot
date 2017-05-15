@@ -55,6 +55,9 @@ public class GameKeyListener implements KeyListener {
 		case KeyEvent.VK_HOME:
 			MapReader.readMapFromPicture("1.png");
 			break;
+		case KeyEvent.VK_END:
+			MapReader.readMapFromPicture("2.png");
+			break;
 		}
 	}
 
