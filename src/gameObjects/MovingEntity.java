@@ -100,7 +100,7 @@ public class MovingEntity extends Entity {
 			xVelocity = -maxVelocity;
 		if(yVelocity > maxVelocity)
 			yVelocity = maxVelocity;
-		else if(xVelocity < -maxVelocity)
+		else if(yVelocity < -maxVelocity)
 			yVelocity = -maxVelocity;
 		
 		this.addX(xVelocity);//moving the object by adding velocity values to the x and y position

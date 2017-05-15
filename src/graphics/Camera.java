@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import gameObjects.Chunk;
 import gameObjects.Entity;
+import gameObjects.Item;
 import utility.Util;
 
 public class Camera {
@@ -53,17 +54,35 @@ public class Camera {
 				}
 			}
 		}
+		else
+			System.out.println("null chunks");
 		if(entities != null){
+			sortEntities();
 			for(Entity e:entities){
 				g.drawImage(iA.resize(e.getImage(), scale), (int)(scale*e.getX()+getXCalibrated()), (int)(scale*e.getY()+getYCalibrated()), null);
 			}
 		}
+		else
+			System.out.println("null entities");
+	}
+	private void sortEntities(){
+		if(entities.size()>1);
+		Entity temp;
+        for (int i = 1; i < entities.size(); i++) {
+            for(int j = i ; j > 0 ; j--){
+                if(entities.get(j).getY() < entities.get(j-1).getY()){
+                    temp = entities.get(j);
+                    entities.set(j, entities.get(j-1));
+                    entities.set(j-1, temp);
+                }
+            }
+        }
 	}
 	private int getXCalibrated(){
-		return (int)(this.x*scale)+(Util.getScreenWidth()/2);
+		return (int)((Util.getScreenWidth()/2)-(this.x*scale));
 	}
 	private int getYCalibrated(){
-		return (int)(this.y*scale)+(Util.getScreenHeight()/2);
+		return (int)((Util.getScreenHeight()/2)-(this.y*scale));
 	}
 	public int getX() {
 		return x;
@@ -91,6 +110,10 @@ public class Camera {
 	}
 	public void addScale(double add){
 		this.scale += add;
+		if(scale < .1)
+			scale = .1;
+		if(scale > 1.9)
+			scale = 1.9;
 	}
 	public void setEntities(ArrayList<Entity> entities){
 		this.entities = entities;

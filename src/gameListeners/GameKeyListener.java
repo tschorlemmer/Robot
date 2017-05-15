@@ -3,6 +3,7 @@ package gameListeners;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import gameFileIO.MapReader;
 import gameObjects.Item;
 import gameObjects.ObjectManager;
 import graphics.GameWindow;
@@ -42,8 +43,17 @@ public class GameKeyListener implements KeyListener {
 		case KeyEvent.VK_RIGHT:
 			GameWindow.getCamera().addX(10);
 			break;
-		case KeyEvent.VK_SPACE:
+		case KeyEvent.VK_1:
 			ObjectManager.addItem(new Item(ObjectManager.player.getX(),ObjectManager.player.getY(),0));
+			break;
+		case KeyEvent.VK_2:
+			ObjectManager.addItem(new Item(ObjectManager.player.getX(),ObjectManager.player.getY(),1));
+			break;
+		case KeyEvent.VK_3:
+			ObjectManager.addItem(new Item(ObjectManager.player.getX(),ObjectManager.player.getY(),2));
+			break;
+		case KeyEvent.VK_HOME:
+			MapReader.readMapFromPicture("1.png");
 			break;
 		}
 	}

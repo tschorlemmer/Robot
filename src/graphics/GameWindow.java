@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import gameListeners.GameKeyListener;
+import gameObjects.Chunk;
 import gameObjects.Entity;
 import gameObjects.Item;
 import gameObjects.ItemChunk;
@@ -29,6 +30,8 @@ public class GameWindow extends JFrame {
 	public GameWindow(){
 		setup();
 		c = new Camera();
+		c.setX(1024);
+		c.setY(768);
 	}
 	
 	private void setup(){
@@ -50,14 +53,6 @@ public class GameWindow extends JFrame {
 	}
 	
 	public void doubleBuffer(Graphics g){
-		c.setChunks(ObjectManager.map.getChunks());
-		ArrayList<Entity> entities = new ArrayList<Entity>();
-		ItemChunk[][] i = ObjectManager.map.getIChunks();
-		for(ItemChunk[] x:i)
-			for(ItemChunk y:x)
-					entities.addAll(y.getItems());
-		entities.add(ObjectManager.player);
-		c.setEntities(entities);
 		g.drawImage(c.getView(), 0, 0, null);
 	}
 	
