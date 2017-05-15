@@ -19,6 +19,7 @@ public class ItemChunk {
 	
 	public void addItem(Item item){
 		items.add(item);
+		sortItems();
 	}
 	public ArrayList<Item> getItems(){
 		return items;
@@ -48,15 +49,16 @@ public class ItemChunk {
 	
 	private void sortItems(){
 		if(items.size()>1);
-		for(int i = 0; i < items.size(); i++){
-			Item temp = items.get(i);
-			int u = i+1;
-			while(u < items.size() && temp.getY()>items.get(u).getY()){
-				items.set(u-1, items.get(u));
-				u++;
-			}
-			items.set(u, temp);
-		}
+		Item temp;
+        for (int i = 1; i < items.size(); i++) {
+            for(int j = i ; j > 0 ; j--){
+                if(items.get(j).getY() < items.get(j-1).getY()){
+                    temp = items.get(j);
+                    items.set(j, items.get(j-1));
+                    items.set(j-1, temp);
+                }
+            }
+        }
 	}
 	
 	public ArrayList<Item> update(){
